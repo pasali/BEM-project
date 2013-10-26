@@ -3,4 +3,24 @@ title: BEM Projesi
 layout: default
 ---
 
-###Proje hakkında
+###Proje Hakkında
+
+Bu proje Ondokuz Mayıs Üniversitesi Bilgisayar Mühendisliği Bölümü bitirme
+projesidir. Bölüm öğretim üyesi sayın Yrd. Doc. Dr. Sedat Akleylek tarafından verilmiştir.
+
+###Proje Araştırma-Geliştirme Grubu
+Ensar Hamzaçebi
+
+e-mail: ensar.hamzacebi@bil.omu.edu.tr
+
+Mehmet Başal
+
+e-mail: mehmet.basal@bil.omu.edu.tr
+
+Burak Kara
+
+e-mail: burak.kara@bil.omu.edu.tr
+
+###Proje Kaynak Kod
+Projenin kaynak kodlarına github adresimizdeki repo'dan ulaşabilirsiniz:
+<a href="https://github.com/pasali/CengProject">Github repo</a>
