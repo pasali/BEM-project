@@ -5,4 +5,4 @@ layout: default
 
 ###Proje anasayfasına hoş geldiniz
 
-deneme
+kısa mesaj gösterim servis projesi
