@@ -11,15 +11,15 @@ projesidir. Bölüm öğretim üyesi sayın Yrd. Doc. Dr. Sedat Akleylek tarafı
 ###Proje Araştırma-Geliştirme Grubu
 Ensar Hamzaçebi
 
-e-mail: ensar.hamzacebi@bil.omu.edu.tr
+e-mail:<mailto:ensar.hamzacebi@bil.omu.edu.tr>
 
 Mehmet Başal
 
-e-mail: mehmet.basal@bil.omu.edu.tr
+e-mail: <mailto:mehmet.basal@bil.omu.edu.tr>
 
 Burak Kara
 
-e-mail: burak.kara@bil.omu.edu.tr
+e-mail:<mailto:burak.kara@bil.omu.edu.tr>
 
 ###Proje Kaynak Kod
 Projenin kaynak kodlarına github adresimizdeki repo'dan ulaşabilirsiniz:
