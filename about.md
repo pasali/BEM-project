@@ -9,13 +9,14 @@ Bu proje Ondokuz Mayıs Üniversitesi Bilgisayar Mühendisliği Bölümü bitirm
 projesidir. Bölüm öğretim üyesi sayın Yrd. Doc. Dr. Sedat Akleylek tarafından verilmiştir.
 
 ###Proje Araştırma-Geliştirme Grubu
-Ensar Hamzaçebi
-
-e-mail:<mailto:ensar.hamzacebi@bil.omu.edu.tr>
 
 Mehmet Başal
 
 e-mail: <mailto:mehmet.basal@bil.omu.edu.tr>
+
+Ensar Hamzaçebi
+
+e-mail:<mailto:ensar.hamzacebi@bil.omu.edu.tr>
 
 Burak Kara
 
