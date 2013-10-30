@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.example.b.e.m;
+package com.pasali.bem;
 
 public final class R {
     public static final class attr {

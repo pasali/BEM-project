@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package com.example.b.e.m;
+package com.pasali.bem;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;
