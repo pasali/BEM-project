@@ -1,11 +1,4 @@
 package com.pasali.bem;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -15,54 +8,19 @@ import android.widget.EditText;
 
 public class MainActivity extends Activity {
 
-	private Socket socket;
-	private static final int PORT = 1238;
-	private static final String serverIp = "192.168.1.107";
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);		
-
-		new Thread(new ClientThread()).start();
+		setContentView(R.layout.activity_main);
 		Button bt = (Button) findViewById(R.id.button1);
 		bt.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View  v) {
-				try {
-					EditText et = (EditText) findViewById(R.id.editText1);
-					String str = et.getText().toString();
-					PrintWriter out = new PrintWriter(new BufferedWriter(
-							new OutputStreamWriter(socket.getOutputStream())),
-							true);
-					out.println(str);
-				} catch (UnknownHostException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				
+			public void onClick(View v) {
+
+				// EditText et = (EditText) findViewById(R.id.editText1);
+				// String str = et.getText().toString();
+
 			}
 		});
-	}
-
-
-	class ClientThread implements Runnable {
-
-		@Override
-		public void run() {
-
-			try {
-				InetAddress serverAddr = InetAddress.getByName(serverIp);
-				socket = new Socket(serverAddr, PORT);
-			} catch (UnknownHostException e1) {
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-
-		}
 
 	}
 }
