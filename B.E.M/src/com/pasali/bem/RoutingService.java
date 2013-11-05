@@ -17,25 +17,30 @@ public class RoutingService extends Service {
 
 	private Socket socket;
 	private static final int PORT = 1238;
-	private static final String serverIp = "192.168.1.34";
+	private static final String serverIp = "192.168.1.107";
 	private String message;
 	@Override
 	public IBinder onBind(Intent arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
-	public void onStart(Intent intent, int startId) {
+	public void onCreate() {
 		new Thread(new ClientThread()).start();	
+	}
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) {
 		Bundle b = intent.getExtras();
 		if (b != null) {
 			message = b.getString("msg");
 		}
+		System.out.println(message);
 		try {
 			PrintWriter out = new PrintWriter(new BufferedWriter(
 					new OutputStreamWriter(socket.getOutputStream())), true);
 			out.println(message);
+			out.flush();
+			out.close();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -43,6 +48,7 @@ public class RoutingService extends Service {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return START_NOT_STICKY;
 	}
 
 	class ClientThread implements Runnable {
@@ -61,5 +67,14 @@ public class RoutingService extends Service {
 
 		}
 
+	}
+	@Override
+	public void onDestroy() {
+		try {
+			socket.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
