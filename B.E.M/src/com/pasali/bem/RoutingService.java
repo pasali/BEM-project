@@ -12,7 +12,7 @@ import android.os.IBinder;
 
 public class RoutingService extends Service {
 
-	private String message;
+	private String data;
 
 	@Override
 	public IBinder onBind(Intent arg0) {
@@ -23,14 +23,13 @@ public class RoutingService extends Service {
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		Bundle b = intent.getExtras();
 		if (b != null) {
-			message = b.getString("msg");
+			data = b.getString("data");
 		}
-		System.out.println(message);
 		try {
 			PrintWriter out = new PrintWriter(new BufferedWriter(
 					new OutputStreamWriter(
 							MainActivity.socket.getOutputStream())), true);
-			out.println(message);
+			out.println(data);
 		} catch (UnknownHostException e1) {
 			System.err.println("Bilinmeyen Sunucu");
 		} catch (IOException e1) {

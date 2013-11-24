@@ -2,14 +2,23 @@ import java.net.*;
 import java.io.*;
 
 public class Server {
-	public static void main(String[] args) throws IOException {
 
-		ServerSocket serverSocket = null;
-		Socket clientSocket = null;
-		PrintWriter out = null;
-		BufferedReader in = null;
-		String inputLine;
-		
+	private ServerSocket serverSocket = null;
+	private Socket clientSocket = null;
+	private PrintWriter out = null;
+	private BufferedReader in = null;
+	private String inputLine;
+	private String[] data;
+
+	public String getInputLine() {
+		return inputLine;
+	}
+
+	public void setInputLine(String inputLine) {
+		this.inputLine = inputLine;
+	}
+
+	public void init() throws IOException {
 		try {
 			serverSocket = new ServerSocket(1238);
 		} catch (IOException e) {
@@ -17,7 +26,7 @@ public class Server {
 			System.exit(1);
 		}
 		System.out.println("Bağlantı bekleniyor...");
-		
+
 		try {
 			clientSocket = serverSocket.accept();
 		} catch (IOException e) {
@@ -29,17 +38,25 @@ public class Server {
 		out = new PrintWriter(clientSocket.getOutputStream(), true);
 		in = new BufferedReader(new InputStreamReader(
 				clientSocket.getInputStream()));
-		
+	}
+
+	public void getMsg() throws IOException {
+		ServerGUI.main(null);
 		while ((inputLine = in.readLine()) != null) {
-			System.out.println("client:" + inputLine);
-			if (inputLine.equals("fak"))
-				break;
+			data = inputLine.split(",");
+			ServerGUI.textArea.append(data[0]);
+			ServerGUI.textField.setText(data[1]);
+			ServerGUI.textArea.append("\n *** \n");
+
 		}
-		System.out.println(clientSocket.getLocalSocketAddress()
-				+ " baglantisi kesildi.");
+
+	}
+
+	public void close() throws IOException {
 		out.close();
 		in.close();
 		clientSocket.close();
 		serverSocket.close();
 	}
+
 }
