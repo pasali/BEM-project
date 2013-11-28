@@ -8,7 +8,7 @@ public class Server {
 	private PrintWriter out = null;
 	private BufferedReader in = null;
 	private String inputLine;
-	private String[] data;
+	private String[] inData;
 
 	public String getInputLine() {
 		return inputLine;
@@ -40,12 +40,19 @@ public class Server {
 				clientSocket.getInputStream()));
 	}
 
+	public void sendMsg() {
+		
+		
+		String dataToSend = msg + "," + number;
+		out.print(dataToSend);
+	}
+	
 	public void getMsg() throws IOException {
 		ServerGUI.main(null);
 		while ((inputLine = in.readLine()) != null) {
-			data = inputLine.split(",");
-			ServerGUI.textArea.append(data[0]);
-			ServerGUI.textField.setText(data[1]);
+			inData = inputLine.split(",");
+			ServerGUI.textArea.append(inData[0]);
+			ServerGUI.textField.setText(inData[1]);
 			ServerGUI.textArea.append("\n *** \n");
 
 		}

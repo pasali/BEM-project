@@ -10,7 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 
-public class RoutingService extends Service {
+public class ReceiverService extends Service {
 
 	private String data;
 
