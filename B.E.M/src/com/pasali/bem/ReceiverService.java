@@ -24,6 +24,7 @@ public class ReceiverService extends Service {
 		Bundle b = intent.getExtras();
 		if (b != null) {
 			data = b.getString("data");
+			
 		}
 		try {
 			PrintWriter out = new PrintWriter(new BufferedWriter(

@@ -41,8 +41,8 @@ public class Server {
 	}
 
 	public void sendMsg() {
-		
-		
+		String number = SendSmsGUI.textField.getText();
+		String msg = SendSmsGUI.textArea.getText();
 		String dataToSend = msg + "," + number;
 		out.print(dataToSend);
 	}
@@ -51,9 +51,8 @@ public class Server {
 		ServerGUI.main(null);
 		while ((inputLine = in.readLine()) != null) {
 			inData = inputLine.split(",");
-			ServerGUI.textArea.append(inData[0]);
+			ServerGUI.textArea.setText(inData[0]);
 			ServerGUI.textField.setText(inData[1]);
-			ServerGUI.textArea.append("\n *** \n");
 
 		}
 

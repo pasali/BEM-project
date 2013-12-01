@@ -17,7 +17,6 @@ public class SenderService extends Service {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		
@@ -25,6 +24,7 @@ public class SenderService extends Service {
 			in = new BufferedReader(new InputStreamReader(
 					MainActivity.socket.getInputStream()));
 			MsgToSend = in.readLine().split(",");
+			System.out.println(MsgToSend[0]);
 			SmsManager smsManager = SmsManager.getDefault();
 			smsManager.sendTextMessage(MsgToSend[1], null, MsgToSend[0], null, null);
 			
