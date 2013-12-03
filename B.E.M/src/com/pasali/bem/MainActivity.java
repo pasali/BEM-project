@@ -45,9 +45,7 @@ public class MainActivity extends Activity {
 				String str = et.getText().toString();
 				setServerIp(str);
 				new Thread(new Client()).start();
-				Toast.makeText(getApplicationContext(),
-						str + " ip adresine bağlanıldı.", Toast.LENGTH_SHORT)
-						.show();
+				
 			}
 		});
 
@@ -62,9 +60,15 @@ public class MainActivity extends Activity {
 				socket = new Socket(serverAddr, PORT);
 				in = new BufferedReader(new InputStreamReader(
 						socket.getInputStream()));
+				/*Toast.makeText(getApplicationContext(),
+						serverIp + " ip adresine bağlanıldı.", Toast.LENGTH_SHORT)
+						.show(); */
 				MsgToSend = in.readLine().split(",");
 				SmsManager smsManager = SmsManager.getDefault();
-				smsManager.sendTextMessage(MsgToSend[1], null, MsgToSend[0], null, null);
+				if (!MsgToSend[0].equals("")) {
+					smsManager.sendTextMessage(MsgToSend[1], null,
+							MsgToSend[0], null, null);
+				}
 
 			} catch (UnknownHostException e1) {
 				System.err.println("Bilinmeyen Sunucu");

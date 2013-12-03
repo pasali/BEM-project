@@ -1,4 +1,3 @@
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,22 +12,17 @@ public class SendSmsGUI {
 	private JFrame frame;
 	public static JTextField textField;
 	public static JTextArea textArea;
+
 	/**
 	 * Launch the application.
 	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SendSmsGUI window = new SendSmsGUI();
-					window.frame.setVisible(true);
-
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
+	/*
+	 * public static void main(String[] args) { EventQueue.invokeLater(new
+	 * Runnable() { public void run() { try { SendSmsGUI window = new
+	 * SendSmsGUI(); window.frame.setVisible(true);
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); } } }); }
+	 */
 
 	/**
 	 * Create the application.
@@ -72,7 +66,7 @@ public class SendSmsGUI {
 
 		textArea = new JTextArea();
 		textArea.setBounds(15, 103, 167, 119);
-		
+
 		frame.setVisible(true);
 		frame.getContentPane().add(textArea);
 	}
