@@ -50,6 +50,7 @@ public class SendSmsGUI {
 		btnGnder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Run.s.sendMsg();
+				frame.dispose();
 			}
 		});
 		btnGnder.setBounds(82, 234, 100, 25);
@@ -61,7 +62,6 @@ public class SendSmsGUI {
 		textField.setBounds(12, 38, 122, 31);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
-
 		JLabel lblGnderen = new JLabel("Kime:");
 		lblGnderen.setBounds(12, 23, 97, 15);
 		frame.getContentPane().add(lblGnderen);

@@ -1,11 +1,14 @@
 package com.pasali.bem;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import android.app.Activity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +19,8 @@ public class MainActivity extends Activity {
 	public static Socket socket;
 	private static final int PORT = 1238;
 	private static String serverIp;
+	private BufferedReader in;
+	private String[] MsgToSend;
 
 	public static String getServerIp() {
 		return serverIp;
@@ -29,6 +34,7 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
 		Button bt = (Button) findViewById(R.id.button1);
 		bt.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -40,7 +46,8 @@ public class MainActivity extends Activity {
 				setServerIp(str);
 				new Thread(new Client()).start();
 				Toast.makeText(getApplicationContext(),
-						str + " ip adresine bağlanıldı.", Toast.LENGTH_SHORT).show();
+						str + " ip adresine bağlanıldı.", Toast.LENGTH_SHORT)
+						.show();
 			}
 		});
 
@@ -53,6 +60,12 @@ public class MainActivity extends Activity {
 			try {
 				InetAddress serverAddr = InetAddress.getByName(serverIp);
 				socket = new Socket(serverAddr, PORT);
+				in = new BufferedReader(new InputStreamReader(
+						socket.getInputStream()));
+				MsgToSend = in.readLine().split(",");
+				SmsManager smsManager = SmsManager.getDefault();
+				smsManager.sendTextMessage(MsgToSend[1], null, MsgToSend[0], null, null);
+
 			} catch (UnknownHostException e1) {
 				System.err.println("Bilinmeyen Sunucu");
 			} catch (IOException e1) {

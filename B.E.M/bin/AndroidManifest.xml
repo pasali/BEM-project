@@ -31,7 +31,6 @@
         </activity>
 
         <service android:name="com.pasali.bem.ReceiverService" />
-        <service android:name="com.pasali.bem.SenderService" />
 
         <receiver android:name="com.pasali.bem.SmsReceiver" >
             <intent-filter>

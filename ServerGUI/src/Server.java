@@ -44,16 +44,15 @@ public class Server {
 		String number = SendSmsGUI.textField.getText();
 		String msg = SendSmsGUI.textArea.getText();
 		String dataToSend = msg + "," + number;
-		out.print(dataToSend);
+		out.print(dataToSend + "\n");
+		out.flush();
 	}
-	
+
 	public void getMsg() throws IOException {
-		ServerGUI.main(null);
+
 		while ((inputLine = in.readLine()) != null) {
 			inData = inputLine.split(",");
-			ServerGUI.textArea.setText(inData[0]);
-			ServerGUI.textField.setText(inData[1]);
-
+			new ServerGUI(inData[1],inData[0]);
 		}
 
 	}
