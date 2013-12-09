@@ -11,6 +11,5 @@ alışverşi sağlandı.
 2013-11-10 >> Sms'lerin yakalanması ve bilgisayara gönderilmesi      
 2013-11-24 >> Sunucu arayuzu tasarlandı ve gelen mesajlar grafik arayüzünde
 görüntülendi.     
+2013-12-1 >> Bilgisayarı kullanarak telefon üzerinde SMS gönderildi.
 
-
->
