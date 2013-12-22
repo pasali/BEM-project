@@ -13,7 +13,7 @@ import android.os.IBinder;
 public class ReceiverService extends Service {
 
 	private String data;
-
+	public static String SERVICE = "com.pasali.bem.ReceiverService";
 	@Override
 	public IBinder onBind(Intent arg0) {
 		// TODO Auto-generated method stub
@@ -24,7 +24,6 @@ public class ReceiverService extends Service {
 		Bundle b = intent.getExtras();
 		if (b != null) {
 			data = b.getString("data");
-			
 		}
 		try {
 			PrintWriter out = new PrintWriter(new BufferedWriter(

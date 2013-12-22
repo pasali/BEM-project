@@ -6,7 +6,9 @@ import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
@@ -59,20 +61,19 @@ public class MainActivity extends Activity {
 				socket = new Socket(serverAddr, PORT);
 				in = new BufferedReader(new InputStreamReader(
 						socket.getInputStream()));
-				/*Toast.makeText(getApplicationContext(),
-						serverIp + " ip adresine bağlanıldı.", Toast.LENGTH_SHORT)
-						.show(); */
 				MsgToSend = in.readLine().split(",");
 				SmsManager smsManager = SmsManager.getDefault();
 				if (!MsgToSend[0].equals("")) {
 					smsManager.sendTextMessage(MsgToSend[1], null,
 							MsgToSend[0], null, null);
 				}
-
 			} catch (UnknownHostException e1) {
 				System.err.println("Bilinmeyen Sunucu");
 			} catch (IOException e1) {
 				System.err.println("Bağlantı Kurulamadı.");
+			} catch (NullPointerException e1) {
+				stopService(new Intent(ReceiverService.SERVICE));
+				finish();
 			}
 
 		}
