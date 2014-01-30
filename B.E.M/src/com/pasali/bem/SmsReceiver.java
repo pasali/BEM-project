@@ -31,7 +31,7 @@ public class SmsReceiver extends BroadcastReceiver {
 			}
 		}
 
-		data = msg + "," + sender;
+		data = msg + "|" + sender;
 		Intent i = new Intent();
 		i.setClassName("com.pasali.bem", "com.pasali.bem.ReceiverService");
 		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK

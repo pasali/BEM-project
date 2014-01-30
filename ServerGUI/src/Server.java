@@ -43,7 +43,7 @@ public class Server {
 	public void sendMsg() {
 		String number = SendSmsGUI.textField.getText();
 		String msg = SendSmsGUI.textArea.getText();
-		String dataToSend = msg + "," + number;
+		String dataToSend = msg + "|" + number;
 		out.print(dataToSend + "\n");
 		out.flush();
 	}
@@ -51,7 +51,7 @@ public class Server {
 	public void getMsg() throws IOException {
 
 		while ((inputLine = in.readLine()) != null) {
-			inData = inputLine.split(",");
+			inData = inputLine.split("\\|");
 			new ServerGUI(inData[1],inData[0]);
 		}
 

@@ -10,10 +10,12 @@ import java.net.UnknownHostException;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -22,6 +24,7 @@ public class MainActivity extends Activity {
 	private static String serverIp;
 	private BufferedReader in;
 	private String[] MsgToSend;
+	private Handler h;
 
 	public static String getServerIp() {
 		return serverIp;
@@ -61,7 +64,14 @@ public class MainActivity extends Activity {
 				socket = new Socket(serverAddr, PORT);
 				in = new BufferedReader(new InputStreamReader(
 						socket.getInputStream()));
-				MsgToSend = in.readLine().split(",");
+				h = new Handler(getApplicationContext().getMainLooper());
+			    h.post(new Runnable() {
+			        @Override
+			        public void run() {
+			             Toast.makeText(getApplicationContext(),"Bağlantı kuruldu.",Toast.LENGTH_LONG).show();
+			        }
+			    });
+				MsgToSend = in.readLine().split("\\|");
 				SmsManager smsManager = SmsManager.getDefault();
 				if (!MsgToSend[0].equals("")) {
 					smsManager.sendTextMessage(MsgToSend[1], null,
@@ -73,7 +83,6 @@ public class MainActivity extends Activity {
 				System.err.println("Bağlantı Kurulamadı.");
 			} catch (NullPointerException e1) {
 				stopService(new Intent(ReceiverService.SERVICE));
-				finish();
 			}
 
 		}
