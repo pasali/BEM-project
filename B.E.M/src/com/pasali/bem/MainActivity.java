@@ -20,7 +20,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
 	public static Socket socket;
-	private static final int PORT = 1238;
+	private static final int PORT = 5353;
 	private static String serverIp;
 	private BufferedReader in;
 	private String[] MsgToSend;
@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
 				String str = et.getText().toString();
 				setServerIp(str);
 				new Thread(new Client()).start();
-				
+
 			}
 		});
 
@@ -65,17 +65,23 @@ public class MainActivity extends Activity {
 				in = new BufferedReader(new InputStreamReader(
 						socket.getInputStream()));
 				h = new Handler(getApplicationContext().getMainLooper());
-			    h.post(new Runnable() {
-			        @Override
-			        public void run() {
-			             Toast.makeText(getApplicationContext(),"Bağlantı kuruldu.",Toast.LENGTH_LONG).show();
-			        }
-			    });
-				MsgToSend = in.readLine().split("\\|");
-				SmsManager smsManager = SmsManager.getDefault();
-				if (!MsgToSend[0].equals("")) {
-					smsManager.sendTextMessage(MsgToSend[1], null,
-							MsgToSend[0], null, null);
+				h.post(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(getApplicationContext(),
+								"Bağlantı kuruldu.", Toast.LENGTH_LONG).show();
+					}
+				});
+
+				while (true) {
+					
+					MsgToSend = in.readLine().split("\\|");
+					System.out.println(MsgToSend);
+					SmsManager smsManager = SmsManager.getDefault();
+					if (!MsgToSend[0].equals("")) {
+						smsManager.sendTextMessage(MsgToSend[1], null,
+								MsgToSend[0], null, null);
+					}
 				}
 			} catch (UnknownHostException e1) {
 				System.err.println("Bilinmeyen Sunucu");

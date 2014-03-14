@@ -20,7 +20,7 @@ public class Server {
 
 	public void init() throws IOException {
 		try {
-			serverSocket = new ServerSocket(1238);
+			serverSocket = new ServerSocket(5353);
 		} catch (IOException e) {
 			System.err.println("I/O exception: " + e.getMessage());
 			System.exit(1);
