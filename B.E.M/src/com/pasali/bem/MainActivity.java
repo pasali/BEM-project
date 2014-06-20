@@ -60,6 +60,9 @@ public class MainActivity extends Activity {
 		@Override
 		public void run() {
 			try {
+				/*
+				 * Sunucu ile bağlantıyı kur
+				 */
 				InetAddress serverAddr = InetAddress.getByName(serverIp);
 				socket = new Socket(serverAddr, PORT);
 				in = new BufferedReader(new InputStreamReader(
@@ -72,9 +75,11 @@ public class MainActivity extends Activity {
 								"Bağlantı kuruldu.", Toast.LENGTH_LONG).show();
 					}
 				});
-
+				/*
+				 * Sunucudan gelen mesajı ilgili numaraya ilet
+				 */
 				while (true) {
-					
+
 					MsgToSend = in.readLine().split("\\|");
 					System.out.println(MsgToSend);
 					SmsManager smsManager = SmsManager.getDefault();

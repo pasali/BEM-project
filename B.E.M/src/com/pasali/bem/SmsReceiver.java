@@ -14,6 +14,9 @@ public class SmsReceiver extends BroadcastReceiver {
 	private SmsMessage[] msgs = null;
 
 	@Override
+	/*
+	 * Telefona gelen mesajları yakala, paketleyip ReceiverService'e gönder
+	 */
 	public void onReceive(Context context, Intent intent) {
 
 		Bundle bundle = intent.getExtras();

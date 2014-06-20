@@ -19,7 +19,10 @@ public class ReceiverService extends Service {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	/*
+	 * (non-Javadoc)
+	 *  SMSReceiver'den gelen mesaj paketlerini sunucuya gönder
+	 */
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		Bundle b = intent.getExtras();
 		if (b != null) {
